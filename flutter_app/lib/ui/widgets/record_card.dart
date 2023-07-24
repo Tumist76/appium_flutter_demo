@@ -1,4 +1,5 @@
 import 'package:appium_demo/models/record_model.dart';
+import 'package:appium_demo/ui/screens/webview_screen.dart';
 import 'package:flutter/material.dart';
 
 class RecordCard extends StatelessWidget {
@@ -27,7 +28,7 @@ class RecordCard extends StatelessWidget {
           alignment: Alignment.bottomRight,
           child: Padding(
             padding: padding,
-            child: buildSearchButton(),
+            child: buildSearchButton(context),
           ),
         ),
       ]),
@@ -60,10 +61,17 @@ class RecordCard extends StatelessWidget {
     );
   }
 
-  Widget buildSearchButton() {
+  Widget buildSearchButton(BuildContext context) {
     return FilledButton.tonal(
-      onPressed: () {},
-      child: const Text('Filled tonal'),
+      onPressed: () => search(context),
+      child: const Text('Найти в Google'),
     );
+  }
+
+  Future<void> search(BuildContext context) async {
+    final searchUrl = 'https://www.google.com/search?q=${record.title}';
+    await Navigator.of(context).push(MaterialPageRoute<void>(
+      builder: (context) => WebViewScreen(url: Uri.parse(searchUrl)),
+    ));
   }
 }

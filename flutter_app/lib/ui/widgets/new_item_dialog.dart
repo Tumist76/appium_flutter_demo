@@ -32,8 +32,7 @@ class _NewItemDialogState extends State<NewItemDialog> {
         children: [
           TextField(
             controller: titleController,
-            decoration:
-                const InputDecoration(labelText: 'Название', filled: true),
+            decoration: const InputDecoration(labelText: 'Название'),
           ),
           const SizedBox(height: 12.0),
           OutlinedButton(
