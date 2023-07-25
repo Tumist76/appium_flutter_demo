@@ -13,7 +13,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final records = <RecordModel>[];
 
-  Future<void> _incrementCounter() async {
+  Future<void> _addRecord() async {
     final newRecord = await NewItemDialog.showModal(context);
     if (newRecord == null) return;
     setState(() => records.add(newRecord));
@@ -27,10 +27,10 @@ class _HomeScreenState extends State<HomeScreen> {
         title: const Text('Appium Demo'),
       ),
       body: _buildBody(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: _addRecord,
+        icon: const Icon(Icons.add),
+        label: const Text('Добавить'),
       ),
     );
   }
