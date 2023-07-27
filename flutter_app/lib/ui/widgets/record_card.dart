@@ -4,8 +4,13 @@ import 'package:flutter/material.dart';
 
 class RecordCard extends StatelessWidget {
   final RecordModel record;
+  final VoidCallback onDeleteTapped;
 
-  const RecordCard({super.key, required this.record});
+  const RecordCard({
+    super.key,
+    required this.record,
+    required this.onDeleteTapped,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +49,7 @@ class RecordCard extends StatelessWidget {
           style: Theme.of(context).textTheme.titleMedium,
         ),
         IconButton(
-          onPressed: () {},
+          onPressed: onDeleteTapped,
           icon: const Icon(Icons.delete_rounded),
         )
       ],

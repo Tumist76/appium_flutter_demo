@@ -1,4 +1,5 @@
 import 'package:appium_demo/models/record_model.dart';
+import 'package:appium_demo/ui/widgets/empty_widget.dart';
 import 'package:appium_demo/ui/widgets/record_card.dart';
 import 'package:appium_demo/ui/widgets/new_item_dialog.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Text('Appium Demo'),
       ),
-      body: _buildBody(),
+      body: buildBody(),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: _addRecord,
         icon: const Icon(Icons.add),
@@ -35,10 +36,16 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget _buildBody() {
+  Widget buildBody() {
+    if (records.isEmpty) return const Center(child: EmptyWidget());
     return ListView.builder(
       itemCount: records.length,
-      itemBuilder: (_, index) => RecordCard(record: records[index]),
+      itemBuilder: (_, index) => RecordCard(
+        record: records[index],
+        onDeleteTapped: () => delete(index),
+      ),
     );
   }
+
+  void delete(int index) => setState(() => records.removeAt(index));
 }
