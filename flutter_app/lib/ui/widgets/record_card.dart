@@ -69,12 +69,13 @@ class RecordCard extends StatelessWidget {
   Widget buildSearchButton(BuildContext context) {
     return FilledButton.tonal(
       onPressed: () => search(context),
-      child: const Text('Найти в Google'),
+      child: const Text('Найти в Wikipedia'),
     );
   }
 
   Future<void> search(BuildContext context) async {
-    final searchUrl = 'https://www.google.com/search?q=${record.title}';
+    final searchUrl =
+        'https://ru.wikipedia.org/w/index.php?search=${record.title}';
     await Navigator.of(context).push(MaterialPageRoute<void>(
       builder: (context) => WebViewScreen(url: Uri.parse(searchUrl)),
     ));
