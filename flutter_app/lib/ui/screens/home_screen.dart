@@ -28,10 +28,9 @@ class _HomeScreenState extends State<HomeScreen> {
         title: const Text('Appium Demo'),
       ),
       body: buildBody(),
-      floatingActionButton: FloatingActionButton.extended(
+      floatingActionButton: FloatingActionButton(
         onPressed: _addRecord,
-        icon: const Icon(Icons.add),
-        label: const Text('Добавить'),
+        child: const Icon(Icons.add),
       ),
     );
   }

@@ -44,9 +44,12 @@ class RecordCard extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          record.title,
-          style: Theme.of(context).textTheme.titleMedium,
+        Expanded(
+          child: Text(
+            record.title,
+            style: Theme.of(context).textTheme.titleMedium,
+            maxLines: 1,
+          ),
         ),
         IconButton(
           onPressed: onDeleteTapped,
@@ -75,7 +78,7 @@ class RecordCard extends StatelessWidget {
 
   Future<void> search(BuildContext context) async {
     final searchUrl =
-        'https://ru.wikipedia.org/w/index.php?search=${record.title}';
+        'https://en.m.wikipedia.org/wiki/Special:Search?go=Go&ns0=1&search=${record.title}';
     await Navigator.of(context).push(MaterialPageRoute<void>(
       builder: (context) => WebViewScreen(url: Uri.parse(searchUrl)),
     ));
