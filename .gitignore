@@ -32,3 +32,6 @@ android/vendor/
 ios/--user-install/
 ios/.bundle/
 ios/vendor/
+
+chromedriver/
+.env
